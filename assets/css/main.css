@@ -314,6 +314,6 @@ label.sidenote-number { display: inline-block; max-height: 2rem; }
 
 h2 { width: 55%; }
 
-@media (max-width: 760px) { h2:nth-child(1) > span:nth-child(1) > span:nth-child(3) { width: 160%; padding-right: 2rem; } .margin-toggle:checked + .marginnote { width: 90%; left: 0; margin: 1rem; } .margin-toggle:checked + .sidenote { width: 85%; padding: 1rem; margin-bottom: 0; } label.margin-toggle { vertical-align: .1em; display: inline-block; max-height: 2rem; } figure { max-width: 100%; } }
+@media (max-width: 760px) { h2:nth-child(1) > span:nth-child(1) > span:nth-child(3) { width: 160%; padding-right: 2rem; } .margin-toggle:checked + .marginnote { width: 90%; left: 0; margin: 1rem; } .margin-toggle:checked + .sidenote { width: 85%; padding: 1rem; margin-bottom: 0; } label.margin-toggle:not(.sidenote-number) { position: relative; top: -0.1em; display: inline-block; max-height: 2rem; } figure { max-width: 100%; } }
 
 /*# sourceMappingURL=main.css.map */
