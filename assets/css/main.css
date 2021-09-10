@@ -310,7 +310,7 @@ label.sidenote-number { display: inline-block; max-height: 2rem; }
 
 .marginnote, .sidenote { font-style: normal; }
 
-.sidenote-number:before, .sidenote-number:after { font-family: inherit; font-style: normal; }
+.sidenote-number:before, .sidenote-number:after { font-family: 'crimson'; font-style: normal; }
 
 h2 { width: 55%; }
 
