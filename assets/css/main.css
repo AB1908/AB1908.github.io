@@ -76,7 +76,7 @@ img { max-width: 100%; }
 
 .sidenote-number { counter-increment: sidenote-counter; }
 
-.sidenote-number:after, .sidenote:before { font-family: et-book-roman-old-style; position: relative; vertical-align: baseline; }
+.sidenote-number:after, .sidenote:before { font-family: 'crimson'; position: relative; vertical-align: baseline; }
 
 .sidenote-number:after { content: counter(sidenote-counter); font-size: 1rem; top: -0.5rem; left: 0.1rem; }
 
