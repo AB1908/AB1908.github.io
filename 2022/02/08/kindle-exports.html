@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+<meta name="generator" content="pandoc">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<meta name="author" content="">
+
+<meta name="dcterms.date" content="2022-02-08 00:00:00 +0530">
+
+
+
+<title>Why I hate Kindle's exports – Random But Interesting</title>
+
+
+<!-- TODO(jez): canonical URL -->
+<!-- TODO(jez): OpenGraph tags -->
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/font-et-book/0.1/et-book.min.css">
+<link rel="stylesheet" href="/assets/css/main.css">
+
+<!-- -->
+
+
+
+<!--[if lt IE 9]>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+<![endif]-->
+
+
+
+
+
+</head>
+<body>
+  
+
+
+
+
+
+  <article>
+    
+  <header>
+    <h1 class="title">Why I hate Kindle's exports</h1>
+    
+    
+      <p class="byline">February 8, 2022</p>
+    
+  </header>
+
+
+
+
+    
+<section>
+<p>Let me preface this by saying that the <a
+href="https://en.wikipedia.org/wiki/Amazon_Kindle">Kindle</a> is
+actually a nice device and the <a
+href="https://play.google.com/store/apps/details?id=com.amazon.kindle">mobile
+app</a> is also a very good e-reader<span
+class="sidenote-wrapper"><label for="sn-0" class="margin-toggle sidenote-number"></label><input type="checkbox" id="sn-0" class="margin-toggle"/><span
+class="sidenote">The reader will likely point out that that’s a low bar
+to clear for a trillion dollar company. To that I say, touché.<br />
+<br />
+</span></span> but the note exports have ranged from mildly unpleasant
+to the downright maddening. Why, you ask? Let’s take a moment to build
+up some background.</p>
+<p>Whenever one makes a highlight and adds a note, or to put it
+succinctly, annotates text, the relationship between the note and the
+highlight is of as much importance as the note and highlight itself.
+This parent child relationship gives important context to a note when
+reviewing it later, separate from the book itself. Take the example of a
+word highlight that you may want to add to your vocabulary:</p>
+<p>image</p>
+<p>If you were to, say, convert this into a flashcard, the relationship
+is of utmost importance. What good would this note do to you without its
+corresponding highlight?</p>
+<p>Let us take the case of an amusing anecdote as an annotation.
+Separate from the highlight, the note is merely a fragment of memory, a
+blossoming flower split off from the stem that anchors it to the world,
+slowly withering away. Upon the next visit, it is nigh impossible to
+breathe in the aroma that was once familiar to us.<span
+class="sidenote-wrapper"><label for="sn-1" class="margin-toggle sidenote-number"></label><input type="checkbox" id="sn-1" class="margin-toggle"/><span
+class="sidenote">Do pardon the overly, <em>ahem</em> flowery language. I
+promise that this pun wasn’t the original intention.<br />
+<br />
+</span></span></p>
+<p>Without this semantic information, it is somewhat painful to decipher
+which note belongs to which highlight. Why re-engage with the text to
+piece together the complete meaning of what you, the reader, wrote
+earlier? Surely, that’s absurd? The only reason to do so would be if you
+were forced to do so, and that is indeed the case. Let us now look at a
+few examples.</p>
+<p>You’d normally expect that the notes have a sort of nested structure.
+We could perhaps demonstrate this with a bit of markdown</p>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; This text is highlighted</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ss">  * </span>And this is a comment</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="ss">  * </span>This is another comment under the same highlight</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>This is a standalone note</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; Standalone highlight</span></span></code></pre></div>
+<p>Let us remove the semantic information.</p>
+<div class="sourceCode" id="cb2"><pre
+class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; This text is highlighted</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>And this is a comment</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>This is another comment under the same highlight</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>This is a standalone note</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; Standalone highlight</span></span></code></pre></div>
+<p>Voilá! Satan has arrived! I present to you, Kindle’s exports. Who
+knows what parent the third comment belongs to? How do we even figure
+out if it’s a standalone note? Without additional semantic information,
+this is indeed impossible to parse correctly. However, the Kindle
+exports give us just enough to think we <em>may</em> have a chance. Let
+us look an actual Kindle export this time.</p>
+<div class="sourceCode" id="cb3"><pre
+class="sourceCode html"><code class="sourceCode html"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;div</span> <span class="er">class</span><span class="ot">=</span><span class="st">&quot;noteHeading&quot;</span><span class="kw">&gt;</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>Highlight (<span class="kw">&lt;span</span> <span class="er">class</span><span class="ot">=</span><span class="st">&quot;highlight_pink&quot;</span><span class="kw">&gt;</span>pink<span class="kw">&lt;/span&gt;</span>) - PREFACE TO THE CHARLES DICKENS EDITION &gt;  Location 103</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/div&gt;</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;div</span> <span class="er">class</span><span class="ot">=</span><span class="st">&quot;noteText&quot;</span><span class="kw">&gt;</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>But, like many fond parents, I have in my heart of hearts a favourite child. And his name is DAVID COPPERFIELD.</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/div&gt;</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;div</span> <span class="er">class</span><span class="ot">=</span><span class="st">&quot;noteHeading&quot;</span><span class="kw">&gt;</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>Note - PREFACE TO THE CHARLES DICKENS EDITION &gt;  Location 103</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/div&gt;</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;div</span> <span class="er">class</span><span class="ot">=</span><span class="st">&quot;noteText&quot;</span><span class="kw">&gt;</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>This is a note that is actually part of the highlight.</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/div&gt;</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;div</span> <span class="er">class</span><span class="ot">=</span><span class="st">&quot;noteHeading&quot;</span><span class="kw">&gt;</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>Note - PREFACE TO THE CHARLES DICKENS EDITION &gt;  Location 115</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/div&gt;</span></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;div</span> <span class="er">class</span><span class="ot">=</span><span class="st">&quot;noteText&quot;</span><span class="kw">&gt;</span></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>This is note is outside the highlight and is actually standalone.</span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/div&gt;</span></span></code></pre></div>
+<p>The astute reader may conjure up a few ideas to parse the notes
+correctly. They are:</p>
+<ul>
+<li><p>Set an arbitrary limit of 2 notes belonging to a highlight.</p>
+<p>This works if your behavior is consistent as you’re essentially
+offloading the parsing logic onto the user instead. This is typically a
+bad idea but perhaps exposing it as a parameter might help. It won’t be
+100% accurate but it will indeed have a reasonable degree of accuracy.
+Manually fixing the errors may turn out to be difficult depending on
+your output template.</p></li>
+<li><p>Use the <code>Location</code> information from the
+<code>noteHeading</code> div and calculate where it ends using the
+highlight length.</p>
+<p>If you thought of this, I tip my hat to you. Unfortunately, the
+location doesn’t seem to be calculated by any known rules and seems to
+be entirely arbitrary. If you do know, feel free to <a
+href="/contact-me.html">reach out</a>. Meanwhile, I’ve actually
+hardcoded a location difference and plan to expose this as a parameter.
+This works reasonably well and has more accuracy than the
+former.</p></li>
+<li><p>Ask the user to add this information manually. Possibly present a
+GUI to “arrange” highlights.</p>
+<p>No.</p></li>
+</ul>
+<p>Here’s where things get spicier. The location seems to be exported
+only if we use custom books. In our example, we’re using the <a
+href="https://www.gutenberg.org/files/766/766-h/766-h.htm">Project
+Gutenberg edition of <em>David Copperfield</em></a>.</p>
+<p>Books purchased from the Kindle store export page numbers
+instead.</p>
+<div class="sourceCode" id="cb4"><pre
+class="sourceCode html"><code class="sourceCode html"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/div&gt;</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;div</span> <span class="er">class</span><span class="ot">=</span><span class="st">&quot;noteHeading&quot;</span><span class="kw">&gt;</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>Highlight (<span class="kw">&lt;span</span> <span class="er">class</span><span class="ot">=</span><span class="st">&quot;highlight_pink&quot;</span><span class="kw">&gt;</span>pink<span class="kw">&lt;/span&gt;</span>) -  Page 1</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/div&gt;</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;div</span> <span class="er">class</span><span class="ot">=</span><span class="st">&quot;noteText&quot;</span><span class="kw">&gt;</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>His Last Bow An Epilogue of Sherlock Holmes</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/div&gt;</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;div</span> <span class="er">class</span><span class="ot">=</span><span class="st">&quot;noteHeading&quot;</span><span class="kw">&gt;</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>Note -  Page 1</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/div&gt;</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;div</span> <span class="er">class</span><span class="ot">=</span><span class="st">&quot;noteText&quot;</span><span class="kw">&gt;</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>This is a sample note.</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/div&gt;</span></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;div</span> <span class="er">class</span><span class="ot">=</span><span class="st">&quot;noteHeading&quot;</span><span class="kw">&gt;</span></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>Note -  Page 1</span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/div&gt;</span></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;div</span> <span class="er">class</span><span class="ot">=</span><span class="st">&quot;noteText&quot;</span><span class="kw">&gt;</span></span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>Another note.</span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/div&gt;</span></span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;div</span> <span class="er">class</span><span class="ot">=</span><span class="st">&quot;noteHeading&quot;</span><span class="kw">&gt;</span></span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>Note -  Page 1</span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/div&gt;</span></span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;div</span> <span class="er">class</span><span class="ot">=</span><span class="st">&quot;noteText&quot;</span><span class="kw">&gt;</span></span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>Note highlighting the full title</span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/div&gt;</span></span></code></pre></div>
+<p>Let’s take a look at what the highlight is actually like.</p>
+<figure>
+<img src="/images/kindle-exports/kindle-mobile-example.png"
+alt="Kindle Highlights for His Last Bow" />
+<figcaption aria-hidden="true">Kindle Highlights for <em>His Last
+Bow</em></figcaption>
+</figure>
+<p>If you’re familiar with notes on the Kindle app, you’ll note that
+when creating a note in tandem with a highlight, it’ll usually be at the
+very end of the highlight. In our case, the heading has three notes:</p>
+<ul>
+<li>the first is “This is a sample note.”</li>
+<li>the second is “Another note.”</li>
+<li>the third and actual highlight tied to the note is “Note
+highlighting the full title”</li>
+</ul>
+<p>Let’s also use a markdown like representation for looking at our HTML
+to compare. We’ll use <a href="https://pandoc.org/MANUAL.html">Pandoc
+markdown</a> to look at the divs:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>::: noteHeading</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>Highlight (<span class="co">[</span><span class="ot">pink</span><span class="co">]</span>{.highlight_pink}) - Page 1</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>::: noteText</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>His Last Bow An Epilogue of Sherlock Holmes</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>::: noteHeading</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>Note - Page 1</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>::: noteText</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>This is a sample note.</span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>::: noteHeading</span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>Note - Page 1</span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>::: noteText</span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>Another note.</span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a>::: noteHeading</span>
+<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a>Note - Page 1</span>
+<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a>::: noteText</span>
+<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a>Note highlighting the full title</span>
+<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a>:::</span></code></pre></div>
+<p>There is legitimately no way at all to extract the correct structure,
+especially once you note that the internal storage is incorrect as
+well.</p>
+<figure>
+<img src="/images/kindle-exports/kindle-app-internal.png"
+alt="Kindle Highlights Notebook" />
+<figcaption aria-hidden="true">Kindle Highlights Notebook</figcaption>
+</figure>
+<p>We may as well just give up at this point. I know I have.</p>
+</section>
+
+
+    
+    <section>
+      <p class="signoff"><em><a href="/">Return home</a></em></p>
+    </section>
+    
+  </article>
+
+  
+
+
+
+
+  
+
+</body>
+</html>
+
