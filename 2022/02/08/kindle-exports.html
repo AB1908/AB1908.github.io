@@ -44,6 +44,8 @@
   <header>
     <h1 class="title">Why I hate Kindle's exports</h1>
     
+      <p class="subtitle">A medium-length rant with no conclusion.</p>
+    
     
       <p class="byline">February 8, 2022</p>
     
@@ -72,7 +74,12 @@ highlight is of as much importance as the note and highlight itself.
 This parent child relationship gives important context to a note when
 reviewing it later, separate from the book itself. Take the example of a
 word highlight that you may want to add to your vocabulary:</p>
-<p>image</p>
+<figure>
+<img src="/images/kindle-exports/kindle-word-highlight.png"
+alt="Example of highlighting an unfamiliar word" />
+<figcaption aria-hidden="true">Example of highlighting an unfamiliar
+word</figcaption>
+</figure>
 <p>If you were to, say, convert this into a flashcard, the relationship
 is of utmost importance. What good would this note do to you without its
 corresponding highlight?</p>
@@ -82,16 +89,15 @@ blossoming flower split off from the stem that anchors it to the world,
 slowly withering away. Upon the next visit, it is nigh impossible to
 breathe in the aroma that was once familiar to us.<span
 class="sidenote-wrapper"><label for="sn-1" class="margin-toggle sidenote-number"></label><input type="checkbox" id="sn-1" class="margin-toggle"/><span
-class="sidenote">Do pardon the overly, <em>ahem</em> flowery language. I
-promise that this pun wasn’t the original intention.<br />
+class="sidenote">Do pardon the overly, <em>ahem</em>, flowery language.
+I promise that this pun wasn’t the original intention.<br />
 <br />
 </span></span></p>
 <p>Without this semantic information, it is somewhat painful to decipher
 which note belongs to which highlight. Why re-engage with the text to
 piece together the complete meaning of what you, the reader, wrote
 earlier? Surely, that’s absurd? The only reason to do so would be if you
-were forced to do so, and that is indeed the case. Let us now look at a
-few examples.</p>
+were forced to do so.</p>
 <p>You’d normally expect that the notes have a sort of nested structure.
 We could perhaps demonstrate this with a bit of markdown</p>
 <div class="sourceCode" id="cb1"><pre
@@ -135,7 +141,7 @@ class="sourceCode html"><code class="sourceCode html"><span id="cb3-1"><a href="
 <p>The astute reader may conjure up a few ideas to parse the notes
 correctly. They are:</p>
 <ul>
-<li><p>Set an arbitrary limit of 2 notes belonging to a highlight.</p>
+<li><p>Set an arbitrary count of notes belonging to a highlight.</p>
 <p>This works if your behavior is consistent as you’re essentially
 offloading the parsing logic onto the user instead. This is typically a
 bad idea but perhaps exposing it as a parameter might help. It won’t be
