@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+<meta name="generator" content="pandoc">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<meta name="author" content="">
+
+<meta name="dcterms.date" content="2022-04-01 00:00:00 +0530">
+
+
+
+<title>FAQ Guide for Obsidian Dataview – Random But Interesting</title>
+
+
+<!-- TODO(jez): canonical URL -->
+<!-- TODO(jez): OpenGraph tags -->
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/font-et-book/0.1/et-book.min.css">
+<link rel="stylesheet" href="/assets/css/main.css">
+
+<!-- -->
+
+
+
+<!--[if lt IE 9]>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+<![endif]-->
+
+
+
+
+
+</head>
+
+<body>
+    
+
+
+
+
+
+    <article>
+        
+  <header>
+    <h1 class="title">FAQ Guide for Obsidian Dataview</h1>
+    
+    
+      <p class="byline">April 1, 2022</p>
+    
+  </header>
+
+
+
+
+        <!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="utf-8">
+        <meta name="generator" content="pandoc">
+        <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes"> -->
+                                <title>-</title>
+        <style type="text/css">
+            code {
+                white-space: pre;
+            }
+        </style>
+                                        <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+            </head>
+
+    <body>
+                <article>
+                                    <nav id="TOC">
+                <ul>
+                <li><a href="#who-this-guide-is-for">Who this guide is
+                for?</a></li>
+                <li><a href="#what-is-dataview">What is
+                dataview?</a></li>
+                <li><a href="#whats-a-query">What’s a query?</a></li>
+                <li><a href="#great-how-do-i-get-started">Great, how do
+                I get started?</a></li>
+                <li><a href="#but-wait-how-do-i-query">But wait, how do
+                I query?</a></li>
+                <li><a href="#what-can-i-query">What can I
+                query?</a></li>
+                <li><a href="#what-are-some-gotchas-about-yaml">What are
+                some gotchas about YAML?</a></li>
+                <li><a href="#how-should-i-define-my-yaml">How should I
+                define my YAML?</a></li>
+                <li><a href="#how-to-debug-your-queries">How to debug
+                your queries?</a>
+                <ul>
+                <li><a href="#some-rows-are-missing">Some rows are
+                missing</a></li>
+                <li><a
+                href="#where-or-function-doesnt-work"><code>WHERE</code>
+                or function doesn’t work</a></li>
+                <li><a href="#my-output-doesnt-look-correct">My output
+                doesn’t look correct</a></li>
+                <li><a href="#i-cant-understand-the-error-messages">I
+                can’t understand the error messages</a></li>
+                <li><a
+                href="#i-did-a-group-by-but-my-results-are-gone-now">I
+                did a <code>GROUP BY</code> but my results are gone
+                now</a></li>
+                <li><a href="#all-my-output-is-emptyonly-has--s">All my
+                output is empty/only has <code>-</code>s</a></li>
+                <li><a
+                href="#this-page-doesnt-work"><code>[[this page]]</code>
+                doesn’t work</a></li>
+                <li><a href="#vault-images-dont-work">Vault Images don’t
+                work</a></li>
+                <li><a href="#why-do-my-results-appear-with-bullets">Why
+                do my results appear with bullets?</a></li>
+                <li><a href="#something-else">Something Else</a></li>
+                </ul></li>
+                <li><a href="#feedback">Feedback</a></li>
+                </ul>
+            </nav>
+                        <section id="who-this-guide-is-for"
+                        class="level2">
+                        <h2>Who this guide is for?</h2>
+                        <p>Any person looking to get started but feels
+                        that the documentation is too intimidating. <a
+                        href="https://publish.obsidian.md/hub/04+-+Guides%2C+Workflows%2C+%26+Courses/Guides/An+Introduction+to+Dataview">SkepticMystic’s
+                        guide</a> is actually a better guide to help you
+                        get started writing queries. This should be
+                        viewed as a supplement to it. That said, if
+                        you’re a programmer or database expert who’s
+                        looking to get started quickly, this guide
+                        probably isn’t it. Check out the <a
+                        href="https://blacksmithgu.github.io/obsidian-dataview/">docs</a>
+                        instead.</p>
+                        </section>
+                        <section id="what-is-dataview" class="level2">
+                        <h2>What is dataview?</h2>
+                        <p>It’s a plugin by <a
+                        href="https://github.com/blacksmithgu">blacksmithgu</a>.
+                        It lets you query data from your Obsidian
+                        vault.</p>
+                        </section>
+                        <section id="whats-a-query" class="level2">
+                        <h2>What’s a query?</h2>
+                        <p>Think of a query as a question you want to
+                        ask your Obsidian vault. For example,</p>
+                        <ul>
+                        <li>What notes did I modify in the last 5
+                        days?</li>
+                        <li>Which movies are tagged
+                        <code>#towatch</code>?</li>
+                        <li>What tasks have I tagged
+                        <code>#critical</code>?</li>
+                        <li>List my favorite books in descending order
+                        of rating.</li>
+                        </ul>
+                        <p>These are just a few examples of what is
+                        possible with dataview. Note that you
+                        <strong>can’t</strong> change your metadata with
+                        dataview. Look into <a
+                        href="https://github.com/chhoumann/MetaEdit">Christian’s
+                        MetaEdit</a> for that instead.</p>
+                        </section>
+                        <section id="great-how-do-i-get-started"
+                        class="level2">
+                        <h2>Great, how do I get started?</h2>
+                        <p>It’s actually pretty easy to get started.
+                        Just install the plugin from the “Community
+                        Plugins” list after turning off safe mode.</p>
+                        </section>
+                        <section id="but-wait-how-do-i-query"
+                        class="level2">
+                        <h2>But wait, how do I query?</h2>
+                        <p>Use a dataview code block like so:</p>
+                        <pre><code>```dataview
+list
+from &quot;Folder&quot;
+```</code></pre>
+                        <p>The syntax is rather extensive so refer to
+                        the docs copiously. I still do so even after
+                        having used dataview for 6 months at the time of
+                        writing.</p>
+                        </section>
+                        <section id="what-can-i-query" class="level2">
+                        <h2>What can I query?</h2>
+                        <p>Dataview indexes<span
+                        class="sidenote-wrapper"><label for="sn-0" class="margin-toggle sidenote-number"></label><input type="checkbox" id="sn-0" class="margin-toggle"/><span
+                        class="sidenote">Just a fancy way of saying
+                        “collects”.<br />
+                        <br />
+                        </span></span> “metadata” from your notes.
+                        Metadata is meta information about your notes
+                        and files. Some of the common metadata fields
+                        you might be familiar with are things like “last
+                        modified date”, “file creation date”, “file
+                        extension”, etc.</p>
+                        <p>There are two types of metadata, for the
+                        purposes of dataview. The one we looked at above
+                        was “implicit metadata”, which exists for every
+                        file in your vault. The list of fields can be
+                        found <a
+                        href="https://blacksmithgu.github.io/obsidian-dataview/data-annotation/#implicit-fields">in
+                        the docs</a>. Note some of the more useful
+                        ones:</p>
+                        <ul>
+                        <li><code>file.name</code></li>
+                        <li><code>file.path</code></li>
+                        <li><code>file.mtime</code></li>
+                        </ul>
+                        <p>There’s a second type of (arguably) more
+                        useful metadata — the one we define. This lets
+                        you create your own indexes to query. Lets look
+                        at some examples.</p>
+                        <p>Book.md</p>
+                        <pre><code>---
+title: &quot;Iliad&quot;
+author: &quot;Homer&quot;
+---</code></pre>
+                        <p>Movie.md</p>
+                        <pre><code>---
+title: &quot;Citizen Kane&quot;
+year: 1941
+director: &quot;Orson Welles&quot;
+---</code></pre>
+                        <p>Note that for <code>Book.md</code> and
+                        <code>Movie.md</code>, the metadata defined
+                        there is actually YAML frontmatter. The Obsidian
+                        Help docs have a useful section on <a
+                        href="https://help.obsidian.md/Advanced+topics/YAML+front+matter">what
+                        that is</a>. Dataview supports YAML but also has
+                        support for a custom variant called “<a
+                        href="https://blacksmithgu.github.io/obsidian-dataview/data-annotation/">inline
+                        YAML</a>”, specific only to Dataview.</p>
+                        <p>Inline YAML is a non-standard YAML-like way
+                        of specifying additional metadata. This is what
+                        is depicted in the example below. It follows the
+                        <code>key:: value</code> style. Note that it
+                        currently doesn’t support nested fields the same
+                        way standard YAML does.</p>
+                        <p>Example.md</p>
+                        <pre><code>This is a sample note. Today I met person:: Adam.</code></pre>
+                        <p>Now that we have some files and metadata
+                        defined, let’s talk about indexes, which is what
+                        you’re querying against. It’s helpful to think
+                        of an index as one big ’ol table that you’re
+                        trying to narrow down to precisely what you
+                        need. So, in this case, say we had these three
+                        metadata examples in our vault, our index would
+                        look like this:</p>
+                        <table>
+                        <colgroup>
+                        <col style="width: 14%" />
+                        <col style="width: 7%" />
+                        <col style="width: 6%" />
+                        <col style="width: 14%" />
+                        <col style="width: 6%" />
+                        <col style="width: 9%" />
+                        <col style="width: 25%" />
+                        <col style="width: 15%" />
+                        </colgroup>
+                        <thead>
+                        <tr class="header">
+                        <th>title</th>
+                        <th>author</th>
+                        <th>year</th>
+                        <th>director</th>
+                        <th>person</th>
+                        <th>file.name</th>
+                        <th>file.ctime</th>
+                        <th>other fields…</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr class="odd">
+                        <td>“Iliad”</td>
+                        <td>“Homer”</td>
+                        <td>null</td>
+                        <td>null</td>
+                        <td>null</td>
+                        <td>“Book”</td>
+                        <td>10:19 PM, March 22, 2022</td>
+                        <td>all other</td>
+                        </tr>
+                        <tr class="even">
+                        <td>“Citizen Kane”</td>
+                        <td>null</td>
+                        <td>“1941”</td>
+                        <td>“Orson Welles”</td>
+                        <td>null</td>
+                        <td>“Movie”</td>
+                        <td>10:19 PM, March 22, 2022</td>
+                        <td>explicit and</td>
+                        </tr>
+                        <tr class="odd">
+                        <td>null</td>
+                        <td>null</td>
+                        <td>null</td>
+                        <td>null</td>
+                        <td>Adam</td>
+                        <td>“Example”</td>
+                        <td>10:19 PM, March 22, 2022</td>
+                        <td>implicit fields</td>
+                        </tr>
+                        </tbody>
+                        </table>
+                        <p>Querying our three files for title like:</p>
+                        <pre><code>```dataview
+table
+    title
+from
+&quot;&quot;
+```</code></pre>
+                        <p>would give us:</p>
+                        <table>
+                        <thead>
+                        <tr class="header">
+                        <th>title</th>
+                        <th>File</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr class="odd">
+                        <td>Iliad</td>
+                        <td><code>[[Book]]</code></td>
+                        </tr>
+                        <tr class="even">
+                        <td>Citizen Kane</td>
+                        <td><code>[[Movie]]</code></td>
+                        </tr>
+                        <tr class="odd">
+                        <td>null</td>
+                        <td><code>[[Example]]</code></td>
+                        </tr>
+                        </tbody>
+                        </table>
+                        <p>We queried the <code>title</code> from our
+                        index but Dataview also gives us the
+                        <code>File</code> column by default.</p>
+                        <p>The rows in your index will depend on what
+                        source you’re using. If you’re using
+                        <code>""</code> as a source, the rows will be
+                        all the files in the vault. If you’re using
+                        <code>#tag</code> as a source, the rows will be
+                        all the files with that tag in them. The columns
+                        in your index will depend on the metadata that
+                        you’ve defined in your files. Task indexes
+                        (<code>- [ ]</code> elements that you use for
+                        TODOs) are different and they’ll be covered in a
+                        separate guide.</p>
+                        <p>To narrow this table down, we typically use
+                        filters or <code>WHERE</code> conditions. For
+                        layering complication logic, we use <a
+                        href="https://blacksmithgu.github.io/obsidian-dataview/query/functions/">functions</a>.
+                        For more on what you can do with this index,
+                        check SkepticMystic’s guide linked earlier.</p>
+                        </section>
+                        <section id="what-are-some-gotchas-about-yaml"
+                        class="level2">
+                        <h2>What are some gotchas about YAML?</h2>
+                        <p>A very important caveat is that this is
+                        <em>all</em> you can query. You cannot query the
+                        <em>contents</em> of your files. File content is
+                        not part of metadata. Remember, metadata is
+                        either explicity or implicitly defined as we
+                        discussed earlier.</p>
+                        <p>Another gotcha is that wikilinks in Obsidian
+                        Frontmatter are not clickable, nor do they show
+                        up on your graph. This is a current Obsidian
+                        limitation.</p>
+                        <p>Finally, metadata for each file is
+                        independent of the other. To rephrase, it means
+                        that each file has its own metadata.</p>
+                        </section>
+                        <section id="how-should-i-define-my-yaml"
+                        class="level2">
+                        <h2>How should I define my YAML?</h2>
+                        <p>This is a difficult question. You can add
+                        nearly any kind of metadata you want to your
+                        notes. The open ended nature of this makes it
+                        difficult to design “schemas”.<span
+                        class="sidenote-wrapper"><label for="sn-1" class="margin-toggle sidenote-number"></label><input type="checkbox" id="sn-1" class="margin-toggle"/><span
+                        class="sidenote">Schemas are the database
+                        equivalent term for your “metadata
+                        structure”.<br />
+                        <br />
+                        </span></span></p>
+                        <p>One solid piece of advice when it comes to
+                        “designing metadata” is to think of your end
+                        goal first. It’s counterintuitive, I know, but
+                        it’ll give you a good idea of what fields you
+                        need to use. You can look at the forums for
+                        inspiration:</p>
+                        <ul>
+                        <li><a
+                        href="https://forum.obsidian.md/t/slrvbs-mediadb-setup/23227">SlRvb’s
+                        media db setup</a></li>
+                        <li><a
+                        href="https://forum.obsidian.md/t/daily-and-weekly-reviews-dataview/17021">Arminta’s
+                        Daily + Weekly Reviews in Dataview</a></li>
+                        <li><a
+                        href="https://forum.obsidian.md/t/dataview-task-and-project-examples/17011">Arminta’s
+                        Dataview Task and Project Examples</a></li>
+                        </ul>
+                        </section>
+                        <section id="how-to-debug-your-queries"
+                        class="level2">
+                        <h2>How to debug your queries?</h2>
+                        <p>It’s a little difficult to write a correct
+                        query on your first try. I still find it tricky
+                        even after having used Dataview for more than 8
+                        months at the time of writing. A general rule of
+                        thumb is to start with the simpler version of a
+                        query and then slowly progress to the actual
+                        query that you want.</p>
+                        <p>Another helpful tip is to actually inspect
+                        the metadata that’s being queried. You can do
+                        this by enabling inline DVJS in the plugin
+                        settings and then typing
+                        <code>`dv.list([dv.current()])`</code> to
+                        inspect that note’s metadata. Remember to use
+                        that in a page that actually has the metadata
+                        since you’re likely writing the query in a
+                        separate file. You’ll note that everything you
+                        can query about that page shows up in a bulleted
+                        list.</p>
+                        <p>Finally, for debugging more complex queries,
+                        these often error out because of some
+                        assumptions you’ve made about the data you’re
+                        querying or the functions you’re using. Common
+                        ones include syntax errors and type mismatches.
+                        Test those assumptions by checking the docs.</p>
+                        <p>Let’s also do a quick rundown of some of the
+                        common errors/issues.</p>
+                        <section id="some-rows-are-missing"
+                        class="level3">
+                        <h3>Some rows are missing</h3>
+                        <p>You expected some rows in the output
+                        table/list but they’re not there. This usually
+                        happens when your <code>FROM</code> or
+                        <code>WHERE</code> is incorrect. If your where
+                        looks correct, your condition is incorrect. This
+                        typically happens when your types are
+                        mismatched, such as:</p>
+                        <ul>
+                        <li>Trying to compare a date to a string</li>
+                        <li>Trying to compare a string against an
+                        array</li>
+                        </ul>
+                        </section>
+                        <section id="where-or-function-doesnt-work"
+                        class="level3">
+                        <h3><code>WHERE</code> or function doesn’t
+                        work</h3>
+                        <p>“I’m writing what I think makes sense but it
+                        doesn’t work.” Often, this happens because the
+                        way you think dataview works isn’t the way it
+                        actually works, i.e. you’ve made incorrect
+                        assumptions. This happens fairly often when
+                        doing programming related stuff so fret not. The
+                        easiest way is to test this separately and
+                        thoroughly consult the documentation.</p>
+                        </section>
+                        <section id="my-output-doesnt-look-correct"
+                        class="level3">
+                        <h3>My output doesn’t look correct</h3>
+                        <p>For example, you expected “2022-10-10” but
+                        Dataview shows you 10 October, 2022. Dataview
+                        converts date strings into <code>date</code>
+                        objects. These are displayed using the
+                        <code>DD MMMM, YYYY</code> format. It’s actually
+                        tricky to work around this. I’ll cover types at
+                        some point in the future.</p>
+                        </section>
+                        <section
+                        id="i-cant-understand-the-error-messages"
+                        class="level3">
+                        <h3>I can’t understand the error messages</h3>
+                        <p>That’s fine. Look for some of the obvious
+                        syntactical mistakes like:</p>
+                        <ul>
+                        <li>Missing commas</li>
+                        <li>Function applied but column name not
+                        assigned</li>
+                        <li>Invalid commands being used</li>
+                        <li>Function arguments incorrect</li>
+                        </ul>
+                        </section>
+                        <section
+                        id="i-did-a-group-by-but-my-results-are-gone-now"
+                        class="level3">
+                        <h3>I did a <code>GROUP BY</code> but my results
+                        are gone now</h3>
+                        <p>Groups behave a little differently in
+                        Dataview. See SkepticMystic’s guide for a quick
+                        introduction.</p>
+                        </section>
+                        <section id="all-my-output-is-emptyonly-has--s"
+                        class="level3">
+                        <h3>All my output is empty/only has
+                        <code>-</code>s</h3>
+                        <p>This occurs when the field you’re querying
+                        either has no data or doesn’t exist in the
+                        index. Inspect the page you’re querying to see
+                        what’s happening using the inline DVJS query I
+                        mentioned earlier.</p>
+                        </section>
+                        <section id="this-page-doesnt-work"
+                        class="level3">
+                        <h3><code>[[this page]]</code> doesn’t work</h3>
+                        <p>Dataview handles wikilinks a little
+                        differently. If you try to do
+                        <code>FROM [[certain file]]</code> in a query,
+                        it’s actually looking up all files that link to
+                        <code>[[certain file]]</code> and not
+                        <code>certain file</code> itself. Dataview calls
+                        this “inlinks”. Files linked to by the current
+                        file are called “outlinks”. See the <a
+                        href="https://blacksmithgu.github.io/obsidian-dataview/query/sources/">links
+                        section in Sources</a>.</p>
+                        </section>
+                        <section id="vault-images-dont-work"
+                        class="level3">
+                        <h3>Vault Images don’t work</h3>
+                        <p>This is currently a known limitation. There
+                        is a workaround involving the
+                        <code>file://</code> URL. However, you can use
+                        web images with no issues.</p>
+                        </section>
+                        <section
+                        id="why-do-my-results-appear-with-bullets"
+                        class="level3">
+                        <h3>Why do my results appear with bullets?</h3>
+                        <p>You might see this happen when your results
+                        are an array or are wrapped in an object. You’d
+                        have to extract it with a field name or array
+                        index.</p>
+                        </section>
+                        <section id="something-else" class="level3">
+                        <h3>Something Else</h3>
+                        <p>Search through the Discussions and Issues on
+                        GitHub. A lot of ground has been covered since
+                        Dataview’s initial release and chances are
+                        someone has run into your error before. If you
+                        still can’t find anything, feel free to open an
+                        issue on GitHub and assign it to me. Don’t be
+                        shy to drop by on the Discord server either!
+                        Mention me in the <code>#dataview</code> thread
+                        or in <code>#plugin-advanced</code> and I’ll be
+                        more than happy to help you out.</p>
+                        </section>
+                        </section>
+                        <section id="feedback" class="level2">
+                        <h2>Feedback</h2>
+                        <p>If you feel there are some other FAQs you
+                        want covered in this guide, feel free to reach
+                        out to me on Discord or via email.</p>
+                        </section>
+        </article>
+            </body>
+
+    </html>
+
+        
+        <section>
+                <div class="navsite">
+                    <a class="prev" href="/index.html">Home</a>
+                    <a href="/contact-me.html">Contact Me</a>
+                </div>
+        </section>
+        
+        <section>
+        </section>
+    </article>
+
+    
+
+
+
+
+    
+
+</body>
+
+</html>
